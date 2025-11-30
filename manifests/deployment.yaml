@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-life-support
+  namespace: node-life-support
+  labels:
+    app.kubernetes.io/name: node-life-support
+    app.kubernetes.io/component: controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: node-life-support
+      app.kubernetes.io/component: controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: node-life-support
+        app.kubernetes.io/component: controller
+    spec:
+      nodeSelector:
+        dedicated: coreComponent
+      tolerations:
+      - key: "coreComponent"
+        operator: "Exists"
+        effect: "NoSchedule"
+      serviceAccountName: node-life-support
+      containers:
+        - name: node-life-support
+          # Please mirror to your local registry and update image accordingly
+          image: ghcr.io/nickperry/node-life-support:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_LABEL_ALLOWLIST
+              value: "nickperry.co.uk/node-life-support"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

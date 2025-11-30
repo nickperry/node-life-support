@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+   # Please mirror to your local registry and update image.repository accordingly
+  repository: ghcr.io/nickperry/node-life-support
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  name: ""
+
+rbac:
+  create: true
+
+resources: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# comma-separated list of node label keys to allow (empty = all nodes)
+nodeLabelAllowlist: ""

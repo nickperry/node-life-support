@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: node-life-support
+  labels:
+    app.kubernetes.io/name: node-life-support
+    app.kubernetes.io/component: controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: node-life-support
+subjects:
+  - kind: ServiceAccount
+    name: node-life-support
+    namespace: node-life-support

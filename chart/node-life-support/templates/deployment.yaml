@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "node-life-support.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "node-life-support.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "node-life-support.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "node-life-support.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ include "node-life-support.serviceAccountName" . }}
+      containers:
+        - name: node-life-support
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: []
+          env:
+            - name: NODE_LABEL_ALLOWLIST
+              value: "{{ .Values.nodeLabelAllowlist }}"
+          resources: {{ toYaml .Values.resources | nindent 14 }}

@@ -1,0 +1,29 @@
+# Binaries for programs and plugins
+/bin/
+/bin/*
+
+# Build outputs
+/build/
+/dist/
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+vendor/
+
+# Go test binary
+*.test
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Local environment files
+.env
