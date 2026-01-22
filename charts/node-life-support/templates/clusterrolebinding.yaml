@@ -9,6 +9,6 @@ roleRef:
   name: {{ include "node-life-support.fullname" . }}
 subjects:
   - kind: ServiceAccount
-  name: {{ include "node-life-support.serviceAccountName" . }}
+    name: {{ include "node-life-support.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 {{- end -}}
