@@ -1,6 +1,6 @@
 apiVersion: v2
 name: node-life-support
-description: Emergency node life-support controller: renew leases and assert Ready condition when nodes are up but can't talk to the control plane.
+description: Emergency node life-support controller - renew leases and assert Ready condition when nodes are up but can't talk to the control plane.
 type: application
 version: 0.1.0
 appVersion: "0.1.0"
