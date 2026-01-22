@@ -10,6 +10,6 @@ entries:
     name: node-life-support
     type: application
     urls:
-    - node-life-support-0.1.0.tgz
+    - https://github.com/nickperry/node-life-support/releases/download/0.1.0/node-life-support-0.1.0.tgz
     version: 0.1.0
 generated: "2026-01-22T18:49:34.110243Z"
